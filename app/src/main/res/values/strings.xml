@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Daily push ups</string>
+
+    <string name="configuration">Configuration</string>
+
+    <string name="txt_onglet1">Pompes restantes</string>
+    <string name="txt_infos_journalieres_retard">Il vous reste %d pompes à faire pour être a jour.\n Vous êtes au jour %d</string>
+    <string name="txt_infos_journalieres_avance">Vous avez fait %d pompes en avance par rapport a aujourd\'hui.\n Vous êtes au jour %d</string>
+    <string name="txt_renseigner_pompes_1">Vous avez fait</string>
+    <string name="txt_renseigner_pompes_2">pompes en plus.</string>
+    <string name="txt_btn_valider">Valider</string>
+    <string name="txt_infos_pompes_manquantes_annee">Vous avez fait %d pompes sur %d pompes au total à faire dans l\'année</string>
+    <string name="txt_btn_explication_challenge">Explication challenge</string>
+    <string name="txt_explication_challenge">Le challenge consiste a faire chaque jour le nombre de pompes correspondant au numéro du jour dans l\'année.\nAinsi le 1er jour de l\'année vous devrez faire une pompe, le deuxième deux pompes et ainsi de suite jusqu\'au dernier jour de l\'année où vous devrez faire 365 pompes &#128516; \nLibre a vous d\'augmenter la difficulté du challenge dans les paramètres, mais serez vous à la hauteur ? &#129300;</string>
+    <string name="txt_onglet2">Configuration</string>
+    <string name="txt_btn_difficulte_normal">normal</string>
+    <string name="txt_btn_difficulte_difficile">difficile</string>
+    <string name="txt_btn_difficulte_extreme">extreme</string>
+    <string name="txt_btn_difficulte_impossible">impossible</string>
+    <string name="txt_btn_difficulte_choisi">Vous avez choisi la difficulté %s</string>
+    <string name="txt_info_pompes_annee">Il y a %d pompes a faire dans l\'année avec ce ratio journalier.</string>
+    <string name="txt_btn_reinitialiser">Réinitialiser</string>
+    <string name="txt_saisir_heure">Saisissez l\'heure à laquelle vous voulez que la notification apparaisse chaque jour</string>
+</resources>

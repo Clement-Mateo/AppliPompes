@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/accueil"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="accueil"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/succes"
+        android:icon="@drawable/ic_baseline_emoji_events_24"
+        android:title="succes"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/parametres"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="parametres"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.applipompes.Configuration">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDifficulteNormal"
+            style="@style/buttonNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="normal"
+            android:text="@string/txt_btn_difficulte_normal" />
+
+        <Button
+            android:id="@+id/btnDifficulteDifficile"
+            style="@style/buttonDifficile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="difficile"
+            android:text="@string/txt_btn_difficulte_difficile" />
+
+        <Button
+            android:id="@+id/btnDifficulteExtreme"
+            style="@style/buttonExtreme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="extreme"
+            android:text="@string/txt_btn_difficulte_extreme" />
+
+        <Button
+            android:id="@+id/btnDifficulteImpossible"
+            style="@style/buttonImpossible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="impossible"
+            android:text="@string/txt_btn_difficulte_impossible" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnChoisirDifficulte"
+        style="@style/button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_difficulte_choisi" />
+
+    <TextView
+        android:id="@+id/txtInfoPompesAnnee"
+        style="@style/paraph"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dip"
+        android:text="@string/txt_info_pompes_annee" />
+
+    <TextView
+        android:id="@+id/txtSaisirHeure"
+        style="@style/paraph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_saisir_heure" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/setTimeEditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:inputType="text"
+            android:textAlignment="viewStart" />
+
+        <Switch
+            android:id="@+id/switchNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.1"
+            android:checked="true"
+            android:fontFamily="@font/lato_black"
+            android:gravity="right"
+            android:shadowColor="#2116FF"
+            android:text="notification" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnValiderHeure"
+        style="@style/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valider" />
+
+    <Button
+        android:id="@+id/btnRaz"
+        style="@style/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="clicRaz"
+        android:text="@string/txt_btn_reinitialiser" />
+
+</LinearLayout>

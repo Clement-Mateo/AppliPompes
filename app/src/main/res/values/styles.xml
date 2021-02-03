@@ -1,0 +1,56 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="icon">@drawable/pushups</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/lato_black</item>
+    </style>
+
+    <style name="paraph">
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="debut_text">
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+
+    <style name="button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="explication_challenge" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="buttonNormal">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/button_normal</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="buttonDifficile">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/button_difficile</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="buttonExtreme">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/button_extreme</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+
+    <style name="buttonImpossible">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/button_impossible</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+    </style>
+</resources>
