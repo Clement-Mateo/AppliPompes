@@ -1,7 +1,5 @@
 [//]: # (![Diagramme de classe]https://github.com/clementor5/chateauHante/blob/main/img/diagramme.png avec parentheses apres ])
 
-
-
 # AppliPompes
 
 Petite application androide qui permet la gestion simplifier du challenge sportif des pompes journalières.
