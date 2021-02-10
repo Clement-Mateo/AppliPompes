@@ -1,4 +1,4 @@
-[//]: # (![Diagramme de classe](https://github.com/clementor5/chateauHante/blob/main/img/diagramme.png\))
+[comment]: <> (![Diagramme de classe](https://github.com/clementor5/chateauHante/blob/main/img/diagramme.png\))
 
 # AppliPompes
 
