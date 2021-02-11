@@ -12,6 +12,11 @@ Il est possible de configurer la difficultée du challenge pour le rendre plus d
 
 L'application permet de definir une heure à laquelle l'utilisateur souhaite que l'application fasse apparaitre une notification pour lui rappeler de faire ses pompes journalieres. Cette notification peut être activée ou desactivée.
 
+## Vous pouvez installer l'application en téléchargeant ce fichier :
+![Application](https://github.com/clementor5/AppliPompes/blob/main/apk/app-debug.apk)
+
+## Il vous suffit ensuite de l'exécuter SOUS ANDROID et de suivre le processus d'installation.
+
 ### L'application est divisée en 3 parties :
 - Une page d'accueil
 - Une page de configuration
