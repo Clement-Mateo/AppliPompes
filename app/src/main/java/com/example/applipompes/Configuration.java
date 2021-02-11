@@ -1,6 +1,7 @@
 package com.example.applipompes;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -15,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +32,7 @@ import java.util.Date;
 public class Configuration extends AppCompatActivity {
 
     private Data data;
+    private Boolean init;
 
     /* Données */
 
@@ -72,39 +73,25 @@ public class Configuration extends AppCompatActivity {
         init();
 
         editTextDefinirHeure.setOnClickListener(v -> {
-            final Calendar cldr = Calendar.getInstance();
             // time picker dialog
             timePicker = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-                        @Override
-                        public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                            editTextDefinirHeure.setText(sHour + ":" + sMinute);
-                        }
-                    }, hour, minutes, true);
+                    (tp, sHour, sMinute) -> editTextDefinirHeure.setText(sHour + ":" + sMinute), hour, minutes, true);
             timePicker.show();
         });
         btnValiderHeure = findViewById(R.id.btnValiderHeure);
-        btnValiderHeure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editTextDefinirHeure.getText().toString().length() > 0) {
-                    try {
-                        String[] time = editTextDefinirHeure.getText().toString().split(":");
-                        hour = Integer.parseInt(time[0]);
-                        minutes = Integer.parseInt(time[1]);
-                        saveData();
-                        if (switchNotification.isChecked()) {
-                            Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
-                        } else {
-                            switchNotification.setChecked(true);
-                        }
-                        notification = true;
-                        repeatNotification();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        editTextDefinirHeure.setText(hour + ":" + minutes);
-                        Toast.makeText(getApplicationContext(), "Votre saisi n'est pas valide !", Toast.LENGTH_SHORT).show();
-                    }
+        btnValiderHeure.setOnClickListener(v -> {
+            if (editTextDefinirHeure.getText().toString().length() > 0) {
+                try {
+                    String[] time = editTextDefinirHeure.getText().toString().split(":");
+                    hour = Integer.parseInt(time[0]);
+                    minutes = Integer.parseInt(time[1]);
+                    notification = true;
+                    saveData();
+                    repeatNotification();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    editTextDefinirHeure.setText(hour + ":" + minutes);
+                    Toast.makeText(getApplicationContext(), "Votre saisi n'est pas valide !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -116,7 +103,7 @@ public class Configuration extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
             } else {
                 notification = false;
-                /* on annule la notification programmée */
+                /* on annule la notification programmée (pour cela on créer une nouvelle pendingIntent et on l'annule desuite après) */
                 repeatNotification();
                 alarmManager.cancel(pendingIntent);
                 Toast.makeText(getApplicationContext(), "La notification journalière à bien été desactivée", Toast.LENGTH_SHORT).show();
@@ -174,22 +161,32 @@ public class Configuration extends AppCompatActivity {
     }
 
     public void clicRaz(View view) {
-        nbPompesFaitesTotal = 0;
-        difficulte = getString(R.string.txt_btn_difficulte_normal);
-        ratio = 1;
 
-        hour = 11;
-        minutes = 00;
-        if (notification) {
-            Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
-        } else {
-            notification = true;
-        }
-        saveData();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog);
+        builder.setCancelable(true);
+        builder.setTitle("Confirmation");
+        builder.setMessage(getString(R.string.txt_validation_réinitialisation));
+
+        /* Si l'utilisateur valide la réinitialisation alors on remet tout les valeurs par defaut et on sauvegarde */
+        builder.setPositiveButton("OK", (dialog, which) -> {
+            /* on créé un nouveau jeu de donnée par defaut */
+            data = new Data();
+            /* et on le sauvegarde */
+            majInfosfromData();
+            saveData();
+        });
+
+        builder.setNegativeButton("Annuler", (dialog, which) -> {
+            /* Si l'utilisateur annule la réinitialisation alors on fait rien */
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public void init() {
 
+        init = true;
         setContentView(R.layout.configuration);
 
         data = new Data();
@@ -213,6 +210,7 @@ public class Configuration extends AppCompatActivity {
         switchNotification = findViewById(R.id.switchNotification);
 
         loadData();
+        init = false;
     }
 
     public void majAffichageInfos() {
@@ -246,7 +244,11 @@ public class Configuration extends AppCompatActivity {
             String message = hour + ":" + minutes;
             editTextDefinirHeure.setText(message);
 
-            switchNotification.setChecked(notification);
+            if (switchNotification.isChecked() && notification && !init) { /* Si les notification étaient activées alors on affiche un toast indiquant la nouvelle heure*/
+                Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
+            } else {
+                switchNotification.setChecked(notification);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             // les valeurs n'ont pas encore étés initialisées

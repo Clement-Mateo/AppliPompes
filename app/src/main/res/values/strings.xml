@@ -12,6 +12,8 @@
     <string name="txt_infos_pompes_manquantes_annee">Vous avez fait %d pompes sur %d pompes au total à faire dans l\'année</string>
     <string name="txt_btn_explication_challenge">Explication challenge</string>
     <string name="txt_explication_challenge">Le challenge consiste a faire chaque jour le nombre de pompes correspondant au numéro du jour dans l\'année.\nAinsi le 1er jour de l\'année vous devrez faire une pompe, le deuxième deux pompes et ainsi de suite jusqu\'au dernier jour de l\'année où vous devrez faire 365 pompes &#128516; \nLibre a vous d\'augmenter la difficulté du challenge dans les paramètres, mais serez vous à la hauteur ? &#129300;</string>
+    <string name="txt_validation_réinitialisation">Êtes vous sure de vouloir réinitialiser toute l\'application ? Votre progression ainsi que vos paramètres seront rétablis par défaut !</string>
+
     <string name="txt_onglet2">Configuration</string>
     <string name="txt_btn_difficulte_normal">normal</string>
     <string name="txt_btn_difficulte_difficile">difficile</string>
