@@ -189,8 +189,6 @@ public class Configuration extends AppCompatActivity {
         init = true;
         setContentView(R.layout.configuration);
 
-        data = new Data();
-
         btnNormal = findViewById(R.id.btnDifficulteNormal);
         btnDifficile = findViewById(R.id.btnDifficulteDifficile);
         btnExtreme = findViewById(R.id.btnDifficulteExtreme);
@@ -285,7 +283,7 @@ public class Configuration extends AppCompatActivity {
     }
 
     public void loadData() {
-        data = SaveAndLoad.loadData(this, data);
+        data = SaveAndLoad.loadData(this);
         majInfosfromData();
         majAffichageInfos();
     }

@@ -75,10 +75,9 @@ public class SuccessPage extends AppCompatActivity {
     public void init() {
         setContentView(R.layout.listview_success);
 
-        data = new Data();
         loadData();
 
-        makeSucces();
+        listSuccess = Success.getSuccess();
 
         listSuccessView = findViewById(R.id.listeSucces);
         for (Success success : listSuccess) {
@@ -91,23 +90,8 @@ public class SuccessPage extends AppCompatActivity {
         listSuccessView.setAdapter(customAdapter);
     }
 
-    public void makeSucces() {
-        listSuccess = new ArrayList<>();
-        listSuccess.add(new Success("NOUVEAU", Color.parseColor("#DB0000"), 1));
-        listSuccess.add(new Success("APPRENTI", Color.parseColor("#DB0000"), 10));
-        listSuccess.add(new Success("DEBUTANT", Color.parseColor("#DB0000"), 50));
-        listSuccess.add(new Success("NOVICE", Color.parseColor("#DB0000"), 100));
-        listSuccess.add(new Success("INITIÉ", Color.parseColor("#DB0000"), 1000));
-        listSuccess.add(new Success("HABITUÉ", Color.parseColor("#DB0000"), 5000));
-        listSuccess.add(new Success("PROFESSIONNEL", Color.parseColor("#DB0000"), 10000));
-        listSuccess.add(new Success("EXPERT", Color.parseColor("#DB0000"), 30000));
-        listSuccess.add(new Success("MAITRE", Color.parseColor("#DB0000"), 50000));
-        listSuccess.add(new Success("CHAMPION", Color.parseColor("#DB0000"), 100000));
-        listSuccess.add(new Success("LÉGENDE", Color.parseColor("#DB0000"), 200000));
-    }
-
     public void loadData() {
-        data = SaveAndLoad.loadData(this, data);
+        data = SaveAndLoad.loadData(this);
         majInfosfromData();
         majAffichageInfos();
     }

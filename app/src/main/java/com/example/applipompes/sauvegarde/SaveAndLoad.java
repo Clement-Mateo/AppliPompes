@@ -23,8 +23,9 @@ public class SaveAndLoad {
         }
     }
 
-    public static Data loadData(Context context, Data data) {
+    public static Data loadData(Context context) {
 
+        Data data = new Data();
         try {
             FileInputStream fileIn = context.openFileInput("sauvegarde");
             ObjectInputStream ois = new ObjectInputStream(fileIn);

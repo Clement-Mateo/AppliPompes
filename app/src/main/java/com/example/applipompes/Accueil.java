@@ -21,6 +21,7 @@ import com.example.applipompes.notifications.NotificationReceiver;
 import com.example.applipompes.sauvegarde.Data;
 import com.example.applipompes.sauvegarde.SaveAndLoad;
 import com.example.applipompes.success.SuccessPage;
+import com.example.applipompes.success.ThreadNotificationsSucces;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -58,6 +59,7 @@ public class Accueil extends AppCompatActivity {
         init();
 
         repeatNotification();
+
     }
 
     @Override
@@ -86,8 +88,10 @@ public class Accueil extends AppCompatActivity {
 
     public void clicValider(View view) {
         boolean ok = true;
+
+        int nbPompesEnPlus = 0;
         try {
-            int nbPompesEnPlus = Integer.parseInt(editTextNbPompesfaites.getText().toString());
+            nbPompesEnPlus = Integer.parseInt(editTextNbPompesfaites.getText().toString());
             nbPompesFaitesTotal += nbPompesEnPlus;
             if (nbPompesEnPlus < 5) {
                 Toast.makeText(getApplicationContext(), "C'est tout ?", Toast.LENGTH_SHORT).show();
@@ -99,11 +103,15 @@ public class Accueil extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Je te crois pas !", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
+            // si autre chose qu'un entier a été entré
+            Toast.makeText(getApplicationContext(), "Saisie incorrecte", Toast.LENGTH_SHORT).show();
             ok = false;
-            e.printStackTrace();
         }
 
         if (ok) {
+            /* on fait apparaitre une notification si un succes a été atteint */
+            Thread threadNotificationsSucces = new ThreadNotificationsSucces(this, nbPompesFaitesTotal, nbPompesEnPlus);
+            threadNotificationsSucces.run();
             editTextNbPompesfaites.setText("");
             saveData();
         }
@@ -122,8 +130,6 @@ public class Accueil extends AppCompatActivity {
     public void init() {
 
         setContentView(R.layout.accueil);
-
-        data = new Data();
 
         txtInfosJournalieres = findViewById(R.id.txtInfosJournalieres);
         editTextNbPompesfaites = findViewById(R.id.editTextNbPompesFaites);
@@ -181,7 +187,7 @@ public class Accueil extends AppCompatActivity {
     }
 
     public void loadData() {
-        data = SaveAndLoad.loadData(this, data);
+        data = SaveAndLoad.loadData(this);
         majInfosfromData();
         majAffichageInfos();
     }
