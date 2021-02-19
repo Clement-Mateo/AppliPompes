@@ -159,6 +159,8 @@ public class Accueil extends AppCompatActivity {
         }
     }
 
+    /*** NOTIFICATIONS ***/
+
     public void repeatNotification() {
 
         Calendar calendar = Calendar.getInstance();

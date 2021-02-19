@@ -90,10 +90,27 @@ public class SuccessPage extends AppCompatActivity {
         listSuccessView.setAdapter(customAdapter);
     }
 
+    /*** METHODES COMMUNES POUR LES DONNEES ***/
+
+    public boolean saveData() {
+        majData();
+        majAffichageInfos();
+        return SaveAndLoad.saveData(this, data);
+    }
+
     public void loadData() {
         data = SaveAndLoad.loadData(this);
         majInfosfromData();
         majAffichageInfos();
+    }
+
+    public void majData() {
+        data.setNbPompesFaitesTotal(nbPompesFaitesTotal);
+        data.setDifficulte(difficulte);
+        data.setRatio(ratio);
+        data.setHour(hour);
+        data.setMinutes(minutes);
+        data.setNotification(notification);
     }
 
     public void majInfosfromData() {
@@ -106,6 +123,6 @@ public class SuccessPage extends AppCompatActivity {
     }
 
     public void majAffichageInfos() {
-
+        /* Inutile pour l'instant */
     }
 }

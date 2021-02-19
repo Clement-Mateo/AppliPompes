@@ -60,7 +60,6 @@ public class Configuration extends AppCompatActivity {
 
     private TimePickerDialog timePicker;
     private EditText editTextDefinirHeure;
-    private Calendar calendar;
     private Switch switchNotification;
     private Button btnValiderHeure;
     private PendingIntent pendingIntent;
@@ -257,7 +256,7 @@ public class Configuration extends AppCompatActivity {
 
     public void repeatNotification() {
 
-        calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minutes);
         calendar.set(Calendar.SECOND, 0);
