@@ -32,7 +32,7 @@ import java.util.Date;
 public class Configuration extends AppCompatActivity {
 
     private Data data;
-    private Boolean init;
+    private Boolean afficherMessageNotif;
 
     /* Données */
 
@@ -138,24 +138,28 @@ public class Configuration extends AppCompatActivity {
     public void normal(View view) {
         difficulte = btnNormal.getText().toString();
         ratio = 1;
+        afficherMessageNotif = false;
         saveData();
     }
 
     public void difficile(View view) {
         difficulte = btnDifficile.getText().toString();
         ratio = 2;
+        afficherMessageNotif = false;
         saveData();
     }
 
     public void extreme(View view) {
         difficulte = btnExtreme.getText().toString();
         ratio = 3;
+        afficherMessageNotif = false;
         saveData();
     }
 
     public void impossible(View view) {
         difficulte = btnImpossible.getText().toString();
         ratio = 5;
+        afficherMessageNotif = false;
         saveData();
     }
 
@@ -185,7 +189,7 @@ public class Configuration extends AppCompatActivity {
 
     public void init() {
 
-        init = true;
+        afficherMessageNotif = false;
         setContentView(R.layout.configuration);
 
         btnNormal = findViewById(R.id.btnDifficulteNormal);
@@ -207,7 +211,6 @@ public class Configuration extends AppCompatActivity {
         switchNotification = findViewById(R.id.switchNotification);
 
         loadData();
-        init = false;
     }
 
     public void majAffichageInfos() {
@@ -241,8 +244,12 @@ public class Configuration extends AppCompatActivity {
             String message = hour + ":" + minutes;
             editTextDefinirHeure.setText(message);
 
-            if (switchNotification.isChecked() && notification && !init) { /* Si les notification étaient activées alors on affiche un toast indiquant la nouvelle heure*/
-                Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
+            if (switchNotification.isChecked() && notification) { /* Si les notification étaient activées alors on affiche un toast indiquant la nouvelle heure*/
+                if (!afficherMessageNotif) {
+                    afficherMessageNotif = true;
+                } else {
+                    Toast.makeText(getApplicationContext(), "La notification apparaitra tout les jours a " + hour + ":" + minutes, Toast.LENGTH_SHORT).show();
+                }
             } else {
                 switchNotification.setChecked(notification);
             }
