@@ -1,4 +1,4 @@
-![Diagramme de classe](https://github.com/clementor5/AppliPompes/blob/main/img/logo_application.png)
+![logo_application](https://github.com/clementor5/AppliPompes/blob/main/img/logo_application.png)
 
 # AppliPompes
 
